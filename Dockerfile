@@ -72,7 +72,7 @@ RUN cd /tmp \
 
 RUN conda install --yes -c conda-forge nodejs \
     && conda install -c conda-forge pyiron \
-    && conda clean --all -y \
+    && conda clean --all -y 
 RUN conda install jupyterhub
 
 USER root
@@ -83,4 +83,4 @@ WORKDIR ${HOME}/
 CMD ["jupyterhub-singleuser"]
 
 # Switch back to pyiron to avoid accidental container runs as root
-#USER ${PYIRON_USER}
+USER ${PYIRON_USER}
