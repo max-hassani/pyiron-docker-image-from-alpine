@@ -70,12 +70,9 @@ RUN cd /tmp \
     && ${CONDA_DIR}/bin/conda install --yes conda==${MINICONDA_VER} \
     && source ${CONDA_DIR}/bin/activate 
 
-RUN conda env update -n root -f "${HOME}/binder/environment.yml" \
-    && conda install --yes -c conda-forge nodejs \
-    && ${SHELL} ${HOME}/binder/postBuild \
+RUN conda install --yes -c conda-forge nodejs \
     && conda install -c conda-forge pyiron \
     && conda clean --all -y \
-    && rm ${HOME}/Dockerfile ${HOME}/deploy.sh
 RUN conda install jupyterhub
 
 USER root
