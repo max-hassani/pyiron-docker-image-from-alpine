@@ -9,5 +9,5 @@ jobs:
       - docker images
       - docker push $DOCKER_USERNAME/pyiron-alpine
     - stage: test
-      script: docker run --rm $DOCKER_USERNAME/pyiron-alpine cat hello.txt
-    - script: docker run --rm $DOCKER_USERNAME/pyiron-alpine cat hello.txt
+      script: docker run --rm $DOCKER_USERNAME/pyiron-alpine echo hello world
+    - script: docker run --rm $DOCKER_USERNAME/pyiron-alpine echo hello world
