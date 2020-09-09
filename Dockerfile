@@ -1,4 +1,4 @@
-FROM alpine:3.8
+FROM alpine:latest
 MAINTAINER Jan Janssen <janssen@mpie.de>
 
 # Inspired by :
@@ -8,6 +8,7 @@ MAINTAINER Jan Janssen <janssen@mpie.de>
 # * https://github.com/datarevenue-berlin/alpine-miniconda
 
 # Install glibc and useful packages
+RUN apk --update add mesa-gl
 RUN echo "@testing http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
     && apk --update add \
     bash \
@@ -71,10 +72,11 @@ RUN cd /tmp \
     && source ${CONDA_DIR}/bin/activate 
 
 RUN conda install --yes -c conda-forge nodejs \
-    && conda install -c conda-forge pyiron \
-    && conda install -c conda-forge notebook \
-    && conda install -c conda-forge lammps \
-    && conda install -c conda-forge nodejs nglview \
+    && conda install --yes -c conda-forge pyiron \
+    && conda install --yes -c conda-forge notebook \
+    && conda install --yes -c conda-forge lammps \
+    && conda install --yes -c conda-forge nodejs nglview \
+    && conda install --yes -c conda-forge 
     && conda clean --all -y
 
 
@@ -82,7 +84,7 @@ RUN conda install --yes -c conda-forge nodejs \
 #    jupyter labextension install nglview-js-widgets \
 	 
 
-RUN conda install jupyterhub
+#RUN conda install jupyterhub
 
 USER root
 
