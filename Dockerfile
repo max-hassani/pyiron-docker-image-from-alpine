@@ -72,7 +72,16 @@ RUN cd /tmp \
 
 RUN conda install --yes -c conda-forge nodejs \
     && conda install -c conda-forge pyiron \
-    && conda clean --all -y 
+    && conda install -c conda-forge notebook \
+    && conda install -c conda-forge lammps \
+    && conda install -c conda-forge nodejs nglview \
+    && conda clean --all -y
+
+
+#RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
+#    jupyter labextension install nglview-js-widgets \
+	 
+
 RUN conda install jupyterhub
 
 USER root
@@ -80,7 +89,7 @@ USER root
 # Configure container startup as root
 WORKDIR ${HOME}/
 #ENTRYPOINT ["/sbin/tini", "--"]
-CMD ["jupyterhub-singleuser"]
+CMD ["jupyter","notebook"]
 
 # Switch back to pyiron to avoid accidental container runs as root
 USER ${PYIRON_USER}
