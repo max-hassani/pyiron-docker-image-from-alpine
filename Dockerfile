@@ -76,7 +76,7 @@ RUN conda install --yes -c conda-forge nodejs \
     && conda install --yes -c conda-forge notebook \
     && conda install --yes -c conda-forge lammps \
     && conda install --yes -c conda-forge nodejs nglview \
-    && conda install --yes -c conda-forge 
+    && conda install --yes -c conda-forge temmeta\
     && conda clean --all -y
 
 
