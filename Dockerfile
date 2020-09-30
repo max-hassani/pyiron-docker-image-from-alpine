@@ -77,11 +77,9 @@ RUN conda install --yes -c conda-forge nodejs \
     && conda install --yes -c conda-forge lammps \
     && conda install --yes -c conda-forge nodejs nglview \
     && conda install --yes -c conda-forge temmeta\
-    && conda clean --all -y
-
-
-#RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
-#    jupyter labextension install nglview-js-widgets \
+    && conda clean --all -y && \
+    jupyter nbextension install nglview --py --sys-prefix && \
+    jupyter nbextension enable nglview --py --sys-prefix
 	 
 
 #RUN conda install jupyterhub
